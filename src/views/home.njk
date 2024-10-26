@@ -1,5 +1,22 @@
 {% extends '_layout.njk' %}
 
 {% block content %}
-  <h1>Hello world</h1>
+  <h1>Events</h1>
+  <p id="events"></p>
+
+  <script>
+    const source = new EventSource('/events')
+
+    source.addEventListener('message', function (event) {
+      const data = JSON.parse(event.data)
+      const events = document.getElementById('events')
+
+      events.innerHTML += data
+    })
+    
+    source.addEventListener('end', function (event) {
+      this.close();
+    })
+
+  </script>
 {% endblock %}

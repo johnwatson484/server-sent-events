@@ -1,5 +1,5 @@
 services:
-  hapi-template:
+  server-sent-events:
     build: .
-    image: hapi-template
-    container_name: hapi-template
+    image: server-sent-events
+    container_name: server-sent-events
