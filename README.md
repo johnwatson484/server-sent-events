@@ -1,4 +1,4 @@
-# Hapi Template
+# Server Sent Events
 Quick start new Node.js project using Hapi.js.
 
 ## Prerequisites

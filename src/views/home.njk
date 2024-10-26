@@ -9,12 +9,14 @@
 
     source.addEventListener('message', function (event) {
       const data = JSON.parse(event.data)
+      console.log('Received event:', data)
       const events = document.getElementById('events')
 
-      events.innerHTML += data
+      events.innerHTML += data.number
     })
     
     source.addEventListener('end', function (event) {
+      console.log('Received end event:', event)
       this.close();
     })
 

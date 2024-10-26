@@ -1,15 +1,19 @@
+import { Readable } from 'stream'
+
 const routes = [{
   method: 'GET',
   path: '/events',
   handler: (request, h) => {
-    const response = h.event({ data: 0 })
+    const rs = Readable()
 
-    for (let i = 1; i < 20; i++) {
-      console.log('Sending event:', i)
-      h.event({ data: i })
+    rs._read = () => {
+      for (let i = 0; i < 20; i++) {
+        rs.push(JSON.stringify({ number: i }))
+      }
+      rs.push(null)
     }
 
-    return response
+    return h.event(rs)
   },
 }]
 
